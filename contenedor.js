@@ -7,26 +7,16 @@ class Contenedor {
     }
 
     async getAll() {
-
         let contenido;
-
-        let data;
 
         try {
             contenido = await fs.promises.readFile(this.nombreArchivo, 'utf-8'); 
+            contenido = JSON.parse(contenido);
+            return contenido;
         } catch (err) {
-            console.log('error, no se encontro el archivo', err)
+            console.log('error, no se encontro el archivo', err);
         }
-
-        data = JSON.parse(contenido);
-
-        // console.log(data);
-
-        // return data;
-
     }
-
 }
-
 
 module.exports = Contenedor;
